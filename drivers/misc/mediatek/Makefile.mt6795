@@ -7,7 +7,6 @@ endif
 obj-$(CONFIG_MTK_SYSTRACKER)   += systracker/
  
 obj-$(CONFIG_MTK_LASTPC)	    += lastpc/
-obj-$(CONFIG_MTK_NFC) += nfc/
 obj-$(CONFIG_ZRAM)	+= mlog/
 obj-$(CONFIG_MTK_ETM)	+= etm/
 
@@ -17,7 +16,6 @@ obj-y	+= mach/
 obj-y	+= aee/
 obj-y	+= ram_console/
 obj-$(CONFIG_MEDIATEK_SOLUTION)	+= sched/
-obj-y	+= videocodec/
 
 obj-$(CONFIG_MTK_BOOT)	+= boot/
 obj-$(CONFIG_MTK_BOOT_REASON)	+= boot_reason/
@@ -36,17 +34,11 @@ obj-y	+= xlog/
 obj-y   += atf_log/
 obj-y	+= mmp/
 obj-y	+= m4u/
-obj-y	+= flashlight/src/
-obj-$(CONFIG_MTK_LENS)   += lens/
 
 obj-y	+= jpeg/
 obj-y   += rrc/
 
 
-obj-y	+= imgsensor/src/
-ifeq ($(wildcard $(srctree)/drivers/misc/mediatek/mach/$(MTK_PLATFORM)/$(ARCH_MTK_PROJECT)/cam_cal),)
-obj-$(CONFIG_MTK_CAM_CAL)	+= cam_cal/src/
-endif
 
 obj-y += mtprof/
 obj-$(CONFIG_MTK_SPM)	+= spm/
@@ -55,8 +47,6 @@ obj-y   += cmdq/
 obj-$(CONFIG_MTK_CIRQ) += cirq/
 obj-y   += watchpoint/
 
-obj-y   += fmradio/
-obj-y   += gps/
 subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/mach/$(MTK_PLATFORM)/include
 obj-$(CONFIG_MTK_COMBO)	+= connectivity/
 obj-$(CONFIG_MTK_CONN_MD)   += conn_md/
@@ -101,7 +91,6 @@ obj-$(CONFIG_MTK_XHCI)   +=  xhci/
 
 
 obj-$(CONFIG_MTK_SYNC)   += sync/
-obj-$(CONFIG_MTK_FB) += video/
 obj-y   += mtprof/
 obj-y   += rtc/
 obj-y   += xlog/
@@ -117,10 +106,6 @@ obj-$(CONFIG_MTK_POWER_GS)   += power_gs/
 
 obj-y   += accdet/
 
-ifeq ($(CONFIG_MTK_HDMI_SUPPORT),y)
-obj-y   += hdmi/
-obj-y   += ext_disp/
-endif
 
 obj-$(CONFIG_MTK_HIBERNATION) += hibcore/
 

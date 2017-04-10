@@ -28,15 +28,11 @@ ifeq ($(CONFIG_MTK_BMP180_NEW),y)
 obj-y	+=  barometer/BMP180-new/
 endif
 endif
-obj-y   +=  camera/camera/
-obj-y   +=  flashlight/constant_flashlight/
 obj-y   +=  vibrator/
 obj-y   +=  leds/
 obj-y   +=  keypad/
-obj-y   +=  sound/
 obj-y   +=  accdet/
 
 ifeq ($(CONFIG_MTK_HDMI_SUPPORT),y)
-obj-y	+=  hdmi/
 endif
 

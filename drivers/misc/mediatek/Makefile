@@ -5,10 +5,6 @@ ifneq ($(PROJECT_X3_SUPPORT),yes)
 obj-y	+= hallsensor/
 endif
 
-ifeq ($(CONFIG_MTK_FINGERPRINT),y)
-obj-y   += fingerprint/
-endif
-
 ifeq ($(PROJECT_X3_SUPPORT),yes)
     KBUILD_CFLAGS += -DPROJECT_X3_SUPPORT
 endif
@@ -58,8 +54,6 @@ obj-y	+= aee/
 obj-$(CONFIG_MTK_EMI_MPU)	+= emi_mpu/
 obj-$(CONFIG_MTK_EMI_BWL)	+= emi_bwl/
 
-obj-$(CONFIG_MTK_FMRADIO)	+= fmradio/
-obj-$(CONFIG_MTK_GPS)	    += gps/
 
 obj-y	+= m4u/
 #obj-y	+= mhl/
@@ -67,7 +61,6 @@ obj-$(CONFIG_MTPROF)	+= mtprof/
 obj-$(CONFIG_MEDIATEK_SOLUTION)	+= sched/
 obj-$(CONFIG_MTK_CMDQ) += cmdq/
 obj-y	+= mmp/
-obj-$(CONFIG_MTK_FB) += video/
 
 obj-$(CONFIG_MTK_AUXADC)	+= auxadc/
 
@@ -88,7 +81,6 @@ obj-$(CONFIG_MTK_XHCI)   +=  xhci/
 #obj-y	+=  hdmitx/
 obj-y	+= ram_console/
 obj-$(CONFIG_THERMAL)	+= thermal/
-obj-$(CONFIG_MTK_VIDEOCODEC_DRIVER) += videocodec/
 obj-$(CONFIG_MTK_MJC_DRIVER) += mjc/
 obj-$(CONFIG_MTK_LDVT_VDEC) += vdec/
 obj-y	+= xlog/
@@ -110,18 +102,7 @@ obj-$(CONFIG_CUSTOM_KERNEL_ACCELEROMETER) += accelerometer/
 obj-$(CONFIG_CUSTOM_KERNEL_GYROSCOPE) += gyroscope/
 obj-$(CONFIG_CUSTOM_KERNEL_MAGNETOMETER) += magnetometer/
 obj-$(CONFIG_CUSTOM_KERNEL_BAROMETER) += barometer/
-obj-$(CONFIG_CUSTOM_KERNEL_STEP_COUNTER)	+= step_counter/
-obj-$(CONFIG_CUSTOM_KERNEL_SIGNIFICANT_MOTION_SENSOR)	+= step_counter/
 obj-$(CONFIG_CUSTOM_KERNEL_ACTIVITY_SENSOR)	+= activity_sensor/
-obj-$(CONFIG_CUSTOM_KERNEL_PICK_UP_SENSOR)	+= pick_up_sensor/
-obj-$(CONFIG_CUSTOM_KERNEL_SHAKE_SENSOR)	+= shake_sensor/
-obj-$(CONFIG_CUSTOM_KERNEL_FACE_DOWN_SENSOR)	+= face_down_sensor/
-obj-$(CONFIG_CUSTOM_KERNEL_IN_POCKET_SENSOR)	+= in_pocket_sensor/
-obj-$(CONFIG_CUSTOM_KERNEL_PEDOMETER)	+= pedometer/
-obj-$(CONFIG_CUSTOM_KERNEL_HEART)	+= heart_rate_sensor/
-obj-$(CONFIG_CUSTOM_KERNEL_TILT_DETECTOR_SENSOR)	+= tilt_detector_sensor/
-obj-$(CONFIG_CUSTOM_KERNEL_WAKE_GESTURE_SENSOR)	+= wake_gesture_sensor/
-obj-$(CONFIG_CUSTOM_KERNEL_GLANCE_GESTURE_SENSOR)	+= glance_gesture_sensor/
 obj-$(CONFIG_CUSTOM_KERNEL_BRINGTOSEE_SENSOR)	+= bringtosee/
 obj-$(CONFIG_CUSTOM_KERNEL_GRAVITY_SENSOR)	+= gravity/
 obj-$(CONFIG_CUSTOM_KERNEL_RV_SENSOR)	+= rotationvector/
@@ -148,22 +129,13 @@ obj-$(CONFIG_MTK_CCCI_EXT)     +=  dual_ccci/
 obj-$(CONFIG_MTK_ECCCI_DRIVER) +=  eccci/
 obj-$(CONFIG_MTK_EEMCS_DRIVER) +=  eemcs/
 obj-$(CONFIG_MTK_IRTX_SUPPORT) += irtx/
-obj-$(CONFIG_MTK_NFC) += nfc/
 obj-$(CONFIG_ZRAM)	+= mlog/
 
 
-obj-$(CONFIG_MTK_LENS)   += lens/
-obj-$(CONFIG_MTK_IMGSENSOR)	+= imgsensor/src/
 
 
-ifeq ($(wildcard $(srctree)/drivers/misc/mediatek/mach/$(MTK_PLATFORM)/$(ARCH_MTK_PROJECT)/cam_cal),)
-obj-$(CONFIG_MTK_CAM_CAL)	+= cam_cal/src/
-endif
 
 #exclude mt6735
-ifeq (,$(filter $(CONFIG_MTK_PLATFORM), "mt6735"))
-obj-y	+=  flashlight/src/
-endif
 
 obj-$(CONFIG_MTK_SYNC)	+= sync/
 
@@ -177,15 +149,8 @@ obj-y	+= eint/
 obj-$(CONFIG_MTK_SERIAL)	+= uart/
 obj-y	+= pmic_wrap/
 
-ifeq ($(CONFIG_MTK_HDMI_SUPPORT),y)
-obj-y	+= hdmi/
-obj-y	+= ext_disp/
-endif
 
 obj-$(CONFIG_MTK_HIBERNATION) += hibcore/
-ifeq ($(CONFIG_CUSTOM_KERNEL_FLASHLIGHT),"dummy_flashlight")
-#obj-y	+= flashlight/dummy_flashlight/
-endif
 
 obj-y	+= accdet/
 obj-$(CONFIG_MTK_KEYPAD)	+= keypad/
@@ -225,7 +190,6 @@ obj-$(CONFIG_MTK_I2C)	+= i2c/
 obj-$(CONFIG_MTK_PWM)	+= pwm/
 obj-$(CONFIG_MTK_SMI_EXT)	+= smi/
 obj-$(CONFIG_MTK_BTCVSD) += btcvsd/
-obj-$(CONFIG_MTK_SOUND)	+= sound/
 obj-$(CONFIG_MTK_SPI)	+= spi/
 obj-$(CONFIG_MTK_SPM)	+= spm/
 
@@ -253,7 +217,6 @@ obj-$(CONFIG_MTK_SWITCH_TX_POWER) += sw_tx_power/
 
 obj-$(CONFIG_MTK_BTIF)	+= btif/
 obj-$(CONFIG_MTK_POWER_GS)	+= power_gs/
-obj-$(CONFIG_MTK_VIDEO) += video/
 obj-$(CONFIG_MTK_AEE_MRDUMP)	+= mrdump/
 obj-$(CONFIG_MTK_WMT_CCCI)	+= wmt_ccci/
 obj-$(CONFIG_MTK_VCOREFS)	+= vcorefs/
